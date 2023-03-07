@@ -2,6 +2,6 @@
 
     export const Dashboard = () => {
       return (
-        <p>Dashboard</p>
+        <p>Dashboard teste</p>
       )
     }
