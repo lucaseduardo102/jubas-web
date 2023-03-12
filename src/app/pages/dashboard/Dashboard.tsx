@@ -1,7 +1,10 @@
+/* Componente do react chamado {link} navegando de uma rota pra outra dentro do HTML */
 
+import { Link } from 'react-router-dom';
 
     export const Dashboard = () => {
       return (
-        <p>Dashboard teste</p>
+        <><p>Dashboard</p>
+        <Link to="/entrar">Login</Link></>
       )
     }
