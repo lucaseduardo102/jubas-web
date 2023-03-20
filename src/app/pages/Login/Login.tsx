@@ -5,12 +5,32 @@ import "./style.css";
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  
+  async function validateLogin() {
+
+    const response = await fetch(`http://localhost:3003/client/check-in`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password
+      })
+    });
+    const json = await response.json();
+  /*  if (response.status == 200) {
+      console.log('Cadastro concluido');
+    } else {
+      console.log(json.message);
+    } */ 
+  }
 
   return (
     <div className="container">
       <div className="container-login">
         <div className="wrap-login">
-          <form className="login-form">
+          <form onSubmit={validateLogin} className="login-form">
             <span className="login-form-title">Login</span>
 
             <div className="wrap-input">
@@ -34,13 +54,13 @@ export const Login = () => {
             </div>
 
             <div className="container-login-form-btn">
-              <button className="login-form-btn">Login</button>
+              <button type="submit" className="login-form-btn">Login</button>
             </div>
 
             <div className="text-center">
               <span className="txt1">Não possui conta? </span>
               <a className="txt2" href="#">
-              <Link to="/pagina-inicial">Criar conta</Link>
+                <Link to="/pagina-inicial">Criar conta</Link>
               </a>
             </div>
           </form>
